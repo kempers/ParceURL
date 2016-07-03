@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="author" content="Alexey Sitdikov"> 
+    <title>ParceURL</title>
+    <meta charset="utf-8">
+    <script src="jquery.js"></script>
+        <script>
+            $(function(){
+                $("#url").on("keyup", function(){
+                    var url=$("#url").val(); 
+                    var regular = "([a-z]{0,5})://([^/]+)/(.*)/(.*)" ; 
+				    var regular1 = "([a-z]{0,5})://([^/]+)/(.*)"; 
+                    var arr = url.match(regular) || url.match(regular1); 
+                    document.querySelector("#proto").value=arr[1];
+                    document.querySelector("#domain").value=arr[2]; 
+                    document.querySelector("#path1").value=arr[3]; 
+                    document.querySelector("#path2").value=arr[4] || " "; 
+                });
+            });
+        </script>
+</head>
+<body>
+    <div class="col-lg-12">
+        Inseret URL:	
+        <input id="url" class="form-control" type="text">
+    <br>
+        Protocol:
+        <input id="proto" class="form-control" type="text">
+    <br>
+        Domain:
+        <input id="domain" class="form-control" type="text">
+    <br>
+        P1:
+        <input id="path1" class="form-control" type="text">
+    <br>
+        P2:
+        <input id="path2" class="form-control" type="text">
+		</div>
+</body>
+</html>
